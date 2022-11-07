@@ -35,7 +35,7 @@ class MainCharacter {
             console.log(`${alienObj.name} has ${alienObj.hull} health remaing.`)
 
         } else {
-            console.log("Where'd you learn how to shoot? You missed!")
+            console.log("Oh no! Where'd you learn how to shoot? You missed! 🚫🚫🚫")
 
         }
         return alienObj.hull
@@ -56,12 +56,13 @@ class Aliens {
     }
 
     attack(playerObj, alienObj) {
+        console.log("It is the enemy's turn to attack. PREPARE DEFENSES!!" )
         if (Math.random() < this.accuracy) {
             playerObj.hull -= this.firepower
             console.log(`${alienObj.name} hit us with a ${alienObj.firepower} damage attack. We have ${playerObj.hull} health remaining.`)
 
         } else {
-            console.log("They missed! Prepare counter attack.")
+            console.log("Way to dodge those attacks!! They missed!")
         }
         return playerObj.hull
     }
@@ -163,11 +164,11 @@ let game = {
             enemy.pop() //the last alien ship in the enemy array will be removed and a new alien ship will become the current enemy
             // this.checkStatus
             console.log(`Status Update: You have ${player.hull} health remaining and there are ${enemy.length} enemy ships left to destroy!.`)
+            if (enemy.length > 0)
             console.log('Here comes a new alien target 👽...')
             if (enemy.length == 0) { //if there are no remaining alien ships in the enemy array,
-                return this.endGame(winnerOfGame) //'The winner is Player will be logged'
+                return this.endGame(winnerOfGame) //'The winner is Player' will be logged'
             }
-            this.retreat()
         }
     },
 
@@ -192,10 +193,14 @@ let game = {
     },
 
     endGame: function (winner) {
-        console.log(`The winner is the ${winner}`)
+        if (winner = 'Player') {
+            console.log('🙌🍾🥂🎉🙌🍾🥂🎉🙌🍾🥂🎉🙌🍾🥂🎉🙌🍾🥂🎉\nCongratulations, you win! You have defeated all of the enemy ships!!\n🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆')
+        } else {
+            console.log('Bummerrr.. your alien ship has been destroyed!! GAME OVER')
+        }
+
+
     }
-
-
 }
 game.startGame()
 
